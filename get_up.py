@@ -8,7 +8,7 @@ from github import Github
 # 14 for test 12 real get up
 GET_UP_ISSUE_NUMBER = 1   
 GET_UP_MESSAGE_TEMPLATE = (
-    "今天的起床时间是--{get_up_time}.\r\n\r\n 懒猪🐷起床啦，赶紧去跑步，上班不迟到。\r\n\r\n 今天的一句诗:\r\n {sentence}"
+    "今天的起床时间是--{get_up_time}.\r\n\r\n 不要玩手机，不要赖床，美好一天开始了，起床大脑就清醒。一天这么短，赶紧high起来。\r\n\r\n 今天的一句诗:\r\n {sentence}"
 )
 SENTENCE_API = "https://v1.jinrishici.com/all"
 DEFAULT_SENTENCE = "赏花归去马如飞\r\n去马如飞酒力微\r\n酒力微醒时已暮\r\n醒时已暮赏花归\r\n"
