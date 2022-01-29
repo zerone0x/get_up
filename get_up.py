@@ -10,6 +10,9 @@ GET_UP_ISSUE_NUMBER = 1
 GET_UP_MESSAGE_TEMPLATE = (
     "今天的起床时间是--{get_up_time}.\r\n\r\n 不要玩手机，不要赖床，美好一天开始了，起床大脑就清醒。一天这么短，赶紧high起来。\r\n\r\n 今天的一句诗:\r\n {sentence}"
 )
+BED_MESSAGE_TEMPLATE = ((
+    "今天的睡觉时间是--{get_up_time}.\r\n\r\n 断网睡觉晚安好梦\r\n\r\n"
+))
 SENTENCE_API = "https://v1.jinrishici.com/all"
 DEFAULT_SENTENCE = "赏花归去马如飞\r\n去马如飞酒力微\r\n酒力微醒时已暮\r\n醒时已暮赏花归\r\n"
 TIMEZONE = "Asia/Shanghai"
@@ -53,7 +56,10 @@ def make_get_up_message():
     # 3 - 7 means early for me
     is_get_up_early = 6 <= now.hour <= 18    
     get_up_time = now.to_datetime_string()
-    body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, sentence=sentence)
+    if 5 <= now.hour <= 17:
+        body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, sentence=sentence)
+    else:
+        body = BED_MESSAGE_TEMPLATE.format(get_up_time=get_up_time)
     return body, is_get_up_early
 
 
@@ -62,9 +68,9 @@ def main(github_token, repo_name, weather_message, tele_token, tele_chat_id):
     repo = u.get_repo(repo_name)
     issue = repo.get_issue(GET_UP_ISSUE_NUMBER)
     is_toady = get_today_get_up_status(issue)
-    if is_toady:
-        print("Today I have recorded the wake up time")
-        return
+    # if is_toady:
+    #     print("Today I have recorded the wake up time")
+    #     return
     early_message, is_get_up_early = make_get_up_message()
     body = early_message
     if weather_message:
