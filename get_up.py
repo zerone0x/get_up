@@ -95,7 +95,8 @@ def main(github_token, repo_name, weather_message, tele_token, tele_chat_id):
                 },
             )
     else:
-        print("You wake up late")
+        body = early_message
+        # print("You wake up late")
 
 
 if __name__ == "__main__":
