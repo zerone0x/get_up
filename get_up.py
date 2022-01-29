@@ -34,12 +34,16 @@ def get_today_get_up_status(issue):
     comments = list(issue.get_comments())
     if not comments:
         return False
-    latest_comment = comments[-1]
+    latest_comment = comments[-2]
+    latest_comment_night = comments[-1]
     now = pendulum.now(TIMEZONE)
     latest_day = pendulum.instance(latest_comment.created_at).in_timezone(
         "Asia/Shanghai"
     )
-    is_today = (latest_day.day == now.day) and (latest_day.month == now.month)
+    latest_day_night = pendulum.instance(latest_comment_night.created_at).in_timezone(
+        "Asia/Shanghai"
+    )
+    is_today = (latest_day.day == now.day) and (latest_day.month == now.month) and (latest_day_night.day == now.day) and (latest_day_night.month == now.month)
     return is_today
 
 
