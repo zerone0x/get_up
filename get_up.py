@@ -8,7 +8,7 @@ from github import Github
 # 14 for test 12 real get up
 GET_UP_ISSUE_NUMBER = 1   
 GET_UP_MESSAGE_TEMPLATE = (
-    "今天的起床时间是--{get_up_time}.\r\n\r\n 不要玩手机，不要赖床，美好一天开始了，起床大脑就清醒。一天这么短，赶紧high起来。\r\n\r\n 今天的一句诗:\r\n {sentence}"
+    "今天的起床时间是--{get_up_time}.\r\n\r\n 少玩手机，好好吃饭，多喝水，多运动，多发呆，多放松。\r\n\r\n 今天的一句诗:\r\n {sentence}"
 )
 BED_MESSAGE_TEMPLATE = ((
     "今天的睡觉时间是--{get_up_time}.\r\n\r\n 断网睡觉晚安好梦\r\n\r\n"
@@ -54,14 +54,13 @@ def make_get_up_message():
     sentence = get_one_sentence()
     now = pendulum.now(TIMEZONE)
     # 3 - 7 means early for me
-    is_get_up_early = 6 <= now.hour <= 18    
+    is_get_up_early = 5 <= now.hour <= 9    
     get_up_time = now.to_datetime_string()
-    if 5 <= now.hour <= 16:
+    if 5 <= now.hour <= 18:
         body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, sentence=sentence)
     else:
         body = BED_MESSAGE_TEMPLATE.format(get_up_time=get_up_time)
     return body, is_get_up_early
-
 
 def main(github_token, repo_name, weather_message, tele_token, tele_chat_id):
     u = login(github_token)
