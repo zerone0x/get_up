@@ -56,7 +56,7 @@ def make_get_up_message():
     # 3 - 7 means early for me
     is_get_up_early = 6 <= now.hour <= 18    
     get_up_time = now.to_datetime_string()
-    if 5 <= now.hour <= 17:
+    if 5 <= now.hour <= 16:
         body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, sentence=sentence)
     else:
         body = BED_MESSAGE_TEMPLATE.format(get_up_time=get_up_time)
