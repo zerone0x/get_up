@@ -8,7 +8,7 @@ from github import Github
 # 14 for test 12 real get up
 GET_UP_ISSUE_NUMBER = 1   
 GET_UP_MESSAGE_TEMPLATE = (
-    "今天的起床时间是--{get_up_time}.\r\n\r\n 睡眠时长是{sleeptime}.\r\n\r\n少玩手机，好好吃饭，多喝水，多运动，多发呆，多放松。\r\n\r\n 今天的一句诗:\r\n {sentence}"
+    "今天的起床时间是--{get_up_time}.\r\n\r\n 少玩手机，好好吃饭，多喝水，多运动，多发呆，多放松。\r\n\r\n 今天的一句诗:\r\n {sentence}"
 )
 BED_MESSAGE_TEMPLATE = ((
     "今天的睡觉时间是--{get_up_time}.\r\n\r\n 断网睡觉晚安好梦\r\n\r\n"
@@ -57,12 +57,12 @@ def make_get_up_message():
     is_get_up_early = 5 <= now.hour <= 9    
     get_up_time = now.to_datetime_string()
     if 5 <= now.hour <= 18:
-        getuptime = get_up_time
-        if bedtime:
-            sleeptime = bedtime - getuptime
-        else:
-            sleeptime = Unknown
-        body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, sleeptime = sleeptime, sentence=sentence)
+        # getuptime = get_up_time
+        # if bedtime:
+        #     sleeptime = bedtime - getuptime
+        # else:
+        #     sleeptime = Unknown
+        body = GET_UP_MESSAGE_TEMPLATE.format(get_up_time=get_up_time, sentence=sentence)
     else:
         bedtime=get_up_time
         body = BED_MESSAGE_TEMPLATE.format(get_up_time=get_up_time)
@@ -95,8 +95,7 @@ def main(github_token, repo_name, weather_message, tele_token, tele_chat_id):
                 },
             )
     else:
-        body = early_message
-        # print("You wake up late")
+        print("You wake up late")
 
 
 if __name__ == "__main__":
