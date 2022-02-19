@@ -10,9 +10,9 @@ GET_UP_ISSUE_NUMBER = 1
 GET_UP_MESSAGE_TEMPLATE = (
     "今天的起床时间是--{get_up_time}.\r\n\r\n 少玩手机，好好吃饭，多喝水，多运动，多发呆，多放松。\r\n\r\n 今天的一句诗:\r\n {sentence}"
 )
-BED_MESSAGE_TEMPLATE = ((
+BED_MESSAGE_TEMPLATE = (
     "今天的睡觉时间是--{get_up_time}.\r\n\r\n 断网睡觉晚安好梦\r\n\r\n 今天的一句诗:\r\n {sentence}"
-))
+)
 SENTENCE_API = "https://v1.jinrishici.com/all"
 DEFAULT_SENTENCE = "赏花归去马如飞\r\n去马如飞酒力微\r\n酒力微醒时已暮\r\n醒时已暮赏花归\r\n"
 TIMEZONE = "Asia/Shanghai"
