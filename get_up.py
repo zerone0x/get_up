@@ -70,7 +70,7 @@ def main(github_token, repo_name, weather_message, tele_token, tele_chat_id):
     # if is_toady:
     #     print("Today I have recorded the wake up time")
     #     return
-    early_message, is_get_up_early = make_get_up_message()
+    early_message = make_get_up_message()
     body = early_message
     if weather_message:
         weather_message = f"现在的天气是{weather_message}\n"
